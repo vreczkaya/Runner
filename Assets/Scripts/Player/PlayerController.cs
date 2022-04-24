@@ -57,10 +57,7 @@ public class PlayerController : MonoBehaviour
             //PlayerPrefs.SetInt("lastRunScore", lastRunScore);
             Time.timeScale = 0;
         }
-        else
-        {
-            return;
-        }
+       
     }
     private Vector3 CalculateDirection()
     {
