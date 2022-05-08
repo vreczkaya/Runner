@@ -53,24 +53,44 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Level\RestartController.cs" />
+    <Compile Include="Assets\Scripts\Meta\Slowdown.cs" />
     <Compile Include="Assets\Scripts\Level\WayPrefab.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy\BrownSpider.cs" />
+    <Compile Include="Assets\Scripts\Meta\GreenElement.cs" />
+    <Compile Include="Assets\Scripts\Meta\Shield.cs" />
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
+    <Compile Include="Assets\Scripts\Meta\BlackElement.cs" />
+    <Compile Include="Assets\Scripts\Meta\BlueElement.cs" />
+    <Compile Include="Assets\Scripts\UI\PotionAmountText.cs" />
     <Compile Include="Assets\Scripts\SwipeController.cs" />
     <Compile Include="Assets\Scripts\Level\MoneyController.cs" />
     <Compile Include="Assets\Scripts\Enemy\BlackSpider.cs" />
+    <Compile Include="Assets\Scripts\Music and Sounds\HitSoundController.cs" />
+    <Compile Include="Assets\Scripts\Meta\YellowElement.cs" />
+    <Compile Include="Assets\Scripts\Meta\AmountController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Meta\Elements.cs" />
+    <Compile Include="Assets\Scripts\Meta\WhiteElement.cs" />
     <Compile Include="Assets\Scripts\Player\Health.cs" />
     <Compile Include="Assets\Scripts\Level\Coin.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Music and Sounds\SoundsController.cs" />
     <Compile Include="Assets\Scripts\Level\WayGenerator.cs" />
+    <Compile Include="Assets\Scripts\Level\Score.cs" />
+    <Compile Include="Assets\Scripts\Music and Sounds\MusicController.cs" />
     <Compile Include="Assets\Scripts\Enums\MoveLine.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Player\RestartPlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonsController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationController.cs" />
+    <Compile Include="Assets\Scripts\UI\BuyButtonController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Gem.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -666,6 +686,15 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Monetization">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

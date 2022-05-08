@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
+    public static bool isShieldOn;
 
     private CharacterController characterController;
     private Vector3 moveDirection;
@@ -16,13 +17,17 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimationController playerAnimation;
     [SerializeField] private float shootDistanse;
     public CapsuleCollider collider;
+    public GameManager gameManager;
+
 
     private void Start()
     {
-        characterController = GetComponentInChildren<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         playerAnimation = GetComponentInChildren<PlayerAnimationController>();
         moveDirection = Vector3.zero;
         collider = GetComponent<CapsuleCollider>();
+        isShieldOn = false;
+        speed = 0;
     }
 
     private void SwipeCheck()
@@ -41,7 +46,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (SwipeController.SwipeDown)
         {
-            Scroll();
+            StartCoroutine(Scroll());
         }
         else if (SwipeController.Tap)
         {
@@ -50,15 +55,18 @@ public class PlayerController : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Obstacle"))
+        if (hit.gameObject.CompareTag("Obstacle")  && !isShieldOn)
         {
-            //losePanel.SetActive(true);
-            //int lastRunScore = int.Parse(scoreScript.scoreText.text.ToString());
-            //PlayerPrefs.SetInt("lastRunScore", lastRunScore);
-            Time.timeScale = 0;
+            gameManager.FinishGame();
+            HitSoundController.OnHit?.Invoke();
+        }
+        else if (hit.gameObject.CompareTag("Enemy"))
+        {
+            gameManager.FinishGame();
         }
        
     }
+   
     private Vector3 CalculateDirection()
     {
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -72,13 +80,17 @@ public class PlayerController : MonoBehaviour
             targetPosition += Vector3.right * distanceBetweenLines;
         }
 
-        Vector3 difference = targetPosition - transform.position; //difference between current position and target position
+        Vector3 difference = targetPosition - transform.position; 
         Vector3 direction = difference.normalized * 25 * Time.deltaTime;
 
         return (direction.magnitude < difference.magnitude) ? direction : difference;
     }
     private void Update()
     {
+        if (GameManager.IsGameStarted)
+        {
+            speed = 5;
+        }
         SwipeCheck();
         characterController.Move(CalculateDirection());
     }
@@ -133,7 +145,6 @@ public class PlayerController : MonoBehaviour
                     hit.collider.gameObject.GetComponent<Enemy>().Shoot();
                 }
             }
-            
         }
     }
 }

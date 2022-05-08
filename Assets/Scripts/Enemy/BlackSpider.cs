@@ -1,19 +1,16 @@
+using UnityEngine;
+
 public class BlackSpider : Enemy
 {
-    private int minHealth = 1;
-    private int currentHealth = 2;
-
+    public GameObject blackElement;
     public override void Shoot()
     {
-        currentHealth--;
-        if (currentHealth < minHealth)
-        {
-            Die();
-        }
+        Die();
     }
 
     private void Die()
     {
         Destroy(this.gameObject);
+        Instantiate(blackElement, this.transform.position, Quaternion.identity);
     }
 }

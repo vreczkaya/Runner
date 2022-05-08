@@ -7,6 +7,14 @@ TagManager:
   - Ground
   - Coin
   - Obstacle
+  - Enemy
+  - Boiler
+  - Beige Element
+  - Black Element
+  - Blue Element
+  - Green Element
+  - White Element
+  - Coin Text
   layers:
   - Default
   - TransparentFX
